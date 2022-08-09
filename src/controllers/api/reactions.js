@@ -1,3 +1,12 @@
-const router = require("express").Router();
+const addReaction = () => {
+  console.log("reaction displayed");
+};
 
-module.exports = router;
+const deleteReaction = () => {
+  console.log("reaction deleted");
+};
+
+module.exports = {
+  addReaction,
+  deleteReaction,
+};

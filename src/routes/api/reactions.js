@@ -1,7 +1,10 @@
 const router = require("express").Router();
-const reactions = require("../../controllers/api/reactions");
+const {
+  addReaction,
+  deleteReaction,
+} = require("../../controllers/api/reactions");
 
-router.post("/", reactions);
-router.delete("/:id", reactions);
-router.put("/:id", reactions);
+router.post("/", addReaction);
+router.delete("/:id", deleteReaction);
+
 module.exports = router;
