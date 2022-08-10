@@ -1,5 +1,7 @@
 const express = require("express");
 const routes = require("./routes");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
 
@@ -10,8 +12,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 
-const init = () => {
+const init = async () => {
   try {
+    const DB_NAME = process.env.DB_NAME;
+    const MONGODB_URL =
+      process.env.MONGODB_URL || `mongodb://localhost:27017/${DB_NAME}`;
+    await mongoose.connect(MONGODB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);
     });
