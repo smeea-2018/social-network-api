@@ -9,7 +9,11 @@ const userSchema = new mongoose.Schema({
     unique: true,
     trim: true,
   },
-
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   thoughts: [
     {
       type: mongoose.Schema.Types.ObjectId,
