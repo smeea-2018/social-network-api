@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-// reaction{}
-// reaction:[reactionSchema]
 
 const Reaction = new mongoose.Schema({
   reactionId: {
