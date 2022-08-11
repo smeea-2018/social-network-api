@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-// reaction{}
-// reaction:[reactionSchema]
 
 const userSchema = new mongoose.Schema({
-  username: {
+  userName: {
     type: String,
     required: true,
     unique: true,
@@ -35,4 +33,4 @@ userSchema.virtual("friendCount").get(function () {
 
 const User = mongoose.model("User", userSchema);
 
-model.exports = User;
+module.exports = User;

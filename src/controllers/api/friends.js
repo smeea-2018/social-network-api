@@ -5,6 +5,7 @@ const getAllFriends = (req, res) => {
   // res.json(data);
 };
 const getSingleFriend = (req, res) => {
+  // const {id} = req.body
   console.log("single friend");
 };
 const addFriend = (req, res) => {

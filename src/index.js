@@ -15,9 +15,10 @@ app.use(routes);
 const init = async () => {
   try {
     const DB_NAME = process.env.DB_NAME;
-    const MONGODB_URL =
-      process.env.MONGODB_URL || `mongodb://localhost:27017/${DB_NAME}`;
-    await mongoose.connect(MONGODB_URL, {
+    console.log(DB_NAME);
+    const MONGODB_URI =
+      process.env.MONGODB_URI || `mongodb://localhost:27017/${DB_NAME}`;
+    await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
