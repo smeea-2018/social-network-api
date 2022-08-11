@@ -33,15 +33,16 @@ const getUserById = async (req, res) => {
   }
 };
 
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
   try {
-    const {userName, email}= req.body;
-       const newUser = await Booking.create({
-      userName, email});
+    const { userName, email } = req.body;
+    const newUser = await Booking.create({
+      userName,
+      email,
+    });
     console.log("user created");
     console.log(newUser);
-     return res.json({ success: true, newUser });
-
+    return res.json({ success: true, newUser });
   } catch (error) {
     console.log(`[ERROR]: Failed to create user | ${error.message}`);
 
@@ -55,15 +56,14 @@ const updateUser = (req, res) => {
   try {
     const { userName, email } = req.body;
 
-    if(userName || email){
-    User.findByIdAndUpdate(id, {userName,email } update);
-    console.log("user updated");
-    }
-    else {
+    if (userName || email) {
+      User.findByIdAndUpdate(id, { userName, email }, update);
+      console.log("user updated");
+    } else {
       console.log("Can't undate user");
       return res
-      .status(500)
-      .json({ success: false, error: "Failed to update user" });
+        .status(500)
+        .json({ success: false, error: "Failed to update user" });
     }
   } catch (error) {
     console.log(`[ERROR]: Failed to update user | ${error.message}`);
