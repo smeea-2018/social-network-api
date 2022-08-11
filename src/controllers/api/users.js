@@ -1,8 +1,10 @@
+const connectToDatabase = require("../../../config/connection");
 const { User } = require("../../models");
 const getAllUsers = async (req, res) => {
   try {
-    const allUsers = await User.findAll({});
-    console.log(allUsers);
+    await connectToDatabase();
+    const allUsers = await User.find({});
+    console.log("all users: " + allUsers);
     return res.json({ success: true, allUsers });
   } catch (error) {
     console.log(`[ERROR]: Failed to get users | ${error.message}`);
@@ -20,8 +22,8 @@ const getUserById = async (req, res) => {
     console.log(userById);
 
     if (!userById) {
-      console.log(`[ERROR]: Bike not found`);
-      return res.status(404).json({ success: false, error: "Bike not found" });
+      console.log(`[ERROR]: User not found`);
+      return res.status(404).json({ success: false, error: "User not found" });
     }
 
     return res.json({ success: true, userById });
@@ -36,7 +38,7 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const { userName, email } = req.body;
-    const newUser = await Booking.create({
+    const newUser = await User.create({
       userName,
       email,
     });
@@ -60,7 +62,7 @@ const updateUser = (req, res) => {
       User.findByIdAndUpdate(id, { userName, email }, update);
       console.log("user updated");
     } else {
-      console.log("Can't undate user");
+      console.log("Can't update user");
       return res
         .status(500)
         .json({ success: false, error: "Failed to update user" });
@@ -76,14 +78,14 @@ const updateUser = (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    const { name } = req.param;
-    if (!name) {
-      console.log(`[ERROR]: User not found`);
-      return res
-        .status(404)
-        .json({ success: false, error: "Friend not found" });
-    }
-    await User.deleteOne({ name: "${name}" });
+    const { id } = req.param;
+    // if (!name) {
+    //   console.log(`[ERROR]: User not found`);
+    //   return res
+    //     .status(404)
+    //     .json({ success: false, error: "Friend not found" });
+    // }
+    await User.findByIdAndDelete(id);
     console.log("user deleted");
   } catch (error) {
     console.log(`[ERROR]: Failed to delete user | ${error.message}`);
