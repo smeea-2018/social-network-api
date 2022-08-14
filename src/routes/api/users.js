@@ -13,7 +13,7 @@ router.get("/", getAllUsers);
 router.get("/:id", getUserById);
 router.post("/", createUser);
 router.put("/:id", updateUser);
-router.delete("/", deleteUser);
+router.delete("/:id", deleteUser);
 router.post("/", addFriend);
 
 module.exports = router;

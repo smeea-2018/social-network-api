@@ -14,7 +14,7 @@ app.use(routes);
 
 const init = async () => {
   try {
-    const DB_NAME = process.env.DB_NAME;
+    const DB_NAME = "socialNetwork_db";
     console.log(DB_NAME);
     const MONGODB_URI =
       process.env.MONGODB_URI || `mongodb://localhost:27017/${DB_NAME}`;

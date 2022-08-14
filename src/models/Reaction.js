@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+const Thought = require("./Thought");
 
 const Reaction = new mongoose.Schema({
   reactionId: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: Thought,
   },
   reactionBody: {
     type: String,
