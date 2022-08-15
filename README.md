@@ -52,9 +52,9 @@ npm run start
 
 The following videos show the web application's appearance and functionality:
 
-<a href = ">Watch Video </a>
+<a href = "https://drive.google.com/file/d/1clH9PGtp4bR5-s2oAIxnNApqLfeNtnvo/view">Watch Video </a>
 
-![ecommerce functionality demonstration]()
+![ecommerce functionality demonstration](""./../socialNetwork_API_Users_Thoughts.gif)
 
 ## Contact Me:
 
