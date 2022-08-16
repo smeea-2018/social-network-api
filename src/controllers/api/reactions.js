@@ -1,5 +1,5 @@
 // import { ObjectId } from "mongoose";
-const { Thought, Reaction } = require("../../models");
+const { Thought } = require("../../models");
 
 const addReaction = async (req, res) => {
   try {
@@ -8,13 +8,13 @@ const addReaction = async (req, res) => {
     const { reactionBody, userName } = req.body;
     console.log(id, reactionBody, userName);
 
-    const newReaction = await Reaction.create({ reactionBody, userName });
-    console.log(newReaction);
-    const reactionId = newReaction.id;
+    // const newReaction = await Reaction.create({ reactionBody, userName });
+    // console.log(newReaction);
+    // const reactionId = newReaction.id;
 
-    // const thoughtToUpdate = await Thought.findByIdAndUpdate(id, {
-    //   $push: { reactions: reactionId },
-    // });
+    const thoughtToUpdate = await Thought.findByIdAndUpdate(id, {
+      $push: { reactions: req.body },
+    });
 
     console.log("reaction added");
     return res.status(201).json({
@@ -36,9 +36,9 @@ const deleteReaction = async (req, res) => {
     const { id, reactionId } = req.params;
 
     const updatedThought = await Thought.findByIdAndUpdate(
-      thoughtId,
+      id,
       {
-        $pull: { reactions: { reactionId } },
+        $pull: { reactions: { _id: reactionId } },
       },
       { returnDocument: "after" }
     );
