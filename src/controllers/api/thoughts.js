@@ -61,11 +61,8 @@ const updateThought = async (req, res) => {
     const { id } = req.params;
     const { userName, thoughtText } = req.body;
 
-    if (userName || thoughtText) {
-      const updatedThought = await Thought.findByIdAndUpdate(id, {
-        userName,
-        thoughtText,
-      });
+    if (req.body) {
+      const updatedThought = await Thought.findByIdAndUpdate(id, req.body);
       return res.json({ success: true, updatedThought });
     } else {
       console.log("Can't update thought");
