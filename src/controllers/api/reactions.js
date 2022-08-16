@@ -8,13 +8,19 @@ const addReaction = async (req, res) => {
     const { reactionBody, userName } = req.body;
     console.log(id, reactionBody, userName);
 
-    if (reactionBody) {
-      const thoughtToUpdate = await Thought.findByIdAndUpdate(id, {
-        $push: { reactions: reactionBody },
-      });
-    } else {
-      console.log(`[ERROR]: Failed to add reaction | ${error.message}`);
-    }
+    const newReaction = await Reaction.create({ reactionBody, userName });
+    console.log(newReaction);
+    const reactionId = newReaction.id;
+
+    // const thoughtToUpdate = await Thought.findByIdAndUpdate(id, {
+    //   $push: { reactions: reactionId },
+    // });
+
+    console.log("reaction added");
+    return res.status(201).json({
+      success: true,
+      thoughtToUpdate,
+    });
   } catch (error) {
     console.log(`[ERROR]: Failed to add reaction | ${error.message}`);
     return res

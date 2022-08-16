@@ -12,8 +12,8 @@ const addFriend = async (req, res) => {
         userId,
         {
           $push: { friends: id },
-        },
-        { returnDocument: "after" }
+        }
+        // { returnDocument: "after" }
       );
 
       return res.status(201).json({
