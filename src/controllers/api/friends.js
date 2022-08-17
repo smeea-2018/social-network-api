@@ -10,13 +10,9 @@ const addFriend = async (req, res) => {
     const user = await User.findById(userId);
 
     if (id) {
-      const friend = await User.findByIdAndUpdate(
-        userId,
-        {
-          $push: { friends: id },
-        }
-        // { returnDocument: "after" }
-      );
+      const friend = await User.findByIdAndUpdate(userId, {
+        $push: { friends: id },
+      });
 
       return res.status(201).json({
         success: true,

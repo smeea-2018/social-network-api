@@ -27,20 +27,20 @@ const addReaction = async (req, res) => {
 
 const deleteReaction = async (req, res) => {
   try {
-    // const { reactionId } = req.params;
+    const { id } = req.params;
     const { reactionId } = req.body;
     console.log(reactionId);
-    //   const updatedThought = await Thought.findByIdAndUpdate(
-    //     id,
-    //     {
-    //       $pull: { reactions: { _id: reactionId } },
-    //     },
-    //     { returnDocument: "after" }
-    //   );
-    //   return res.status(201).json({
-    //     success: true,
-    //     data: updatedThought,
-    //   });
+    const updatedThought = await Thought.findByIdAndUpdate(
+      id,
+      {
+        $pull: { reactions: { _id: reactionId } },
+      },
+      { returnDocument: "after" }
+    );
+    return res.status(201).json({
+      success: true,
+      data: updatedThought,
+    });
     const deletedReaction = await Reaction.findOneAndDelete({
       _id: reactionId,
     });
