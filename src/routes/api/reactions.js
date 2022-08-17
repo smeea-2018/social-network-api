@@ -5,6 +5,6 @@ const {
 } = require("../../controllers/api/reactions");
 
 router.post("/:id", addReaction);
-router.delete("/:id", deleteReaction);
+router.delete("/", deleteReaction);
 
 module.exports = router;

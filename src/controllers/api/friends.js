@@ -2,8 +2,10 @@ const { User } = require("../../models");
 
 const addFriend = async (req, res) => {
   try {
-    const { id } = req.body;
-    const { userId } = req.params;
+    const { id } = req.params;
+    const { userId } = req.body;
+
+    console.log(id, userId);
 
     const user = await User.findById(userId);
 
@@ -37,18 +39,17 @@ const addFriend = async (req, res) => {
 };
 const deleteFriend = async (req, res) => {
   try {
-    const { userId, id } = req.params;
+    const { _id } = req.params;
+    const { friendId } = req.body;
+    console.log(_id, friendId);
 
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      {
-        $pull: { friends: id },
-      },
-      { returnDocument: "after" }
-    );
+    const updatedUser = await User.findByIdAndUpdate(_id, {
+      $pull: { friends: friendId },
+    });
+    console.log(updatedUser);
     return res.status(201).json({
       success: true,
-      data: updatedUser,
+      updatedUser,
     });
   } catch (error) {
     console.log(`[ERROR: Failed to delete friend | ${error.message}]`);

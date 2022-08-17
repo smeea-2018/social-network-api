@@ -84,10 +84,34 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const getFriends = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+
+    const friendById = await User.findById(id);
+
+    if (!friendById) {
+      console.log(`[ERROR]: friend not found`);
+      return res
+        .status(404)
+        .json({ success: false, error: "friend not found" });
+    }
+
+    return res.json({ success: true, friendById });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get friend | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to get friend" });
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   updateUser,
   deleteUser,
+  getFriends,
 };

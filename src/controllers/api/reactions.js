@@ -1,5 +1,6 @@
 // import { ObjectId } from "mongoose";
 const { Thought } = require("../../models");
+const { Reaction } = require("../../models/Reaction");
 
 const addReaction = async (req, res) => {
   try {
@@ -8,15 +9,10 @@ const addReaction = async (req, res) => {
     const { reactionBody, userName } = req.body;
     console.log(id, reactionBody, userName);
 
-    // const newReaction = await Reaction.create({ reactionBody, userName });
-    // console.log(newReaction);
-    // const reactionId = newReaction.id;
-
     const thoughtToUpdate = await Thought.findByIdAndUpdate(id, {
       $push: { reactions: req.body },
     });
 
-    console.log("reaction added");
     return res.status(201).json({
       success: true,
       thoughtToUpdate,
@@ -27,28 +23,30 @@ const addReaction = async (req, res) => {
       .status(500)
       .json({ success: false, error: "Failed to add reaction" });
   }
-
-  console.log("reaction displayed");
 };
 
 const deleteReaction = async (req, res) => {
   try {
-    const { id, reactionId } = req.params;
-
-    const updatedThought = await Thought.findByIdAndUpdate(
-      id,
-      {
-        $pull: { reactions: { _id: reactionId } },
-      },
-      { returnDocument: "after" }
-    );
-    return res.status(201).json({
-      success: true,
-      data: updatedThought,
+    // const { reactionId } = req.params;
+    const { reactionId } = req.body;
+    console.log(reactionId);
+    //   const updatedThought = await Thought.findByIdAndUpdate(
+    //     id,
+    //     {
+    //       $pull: { reactions: { _id: reactionId } },
+    //     },
+    //     { returnDocument: "after" }
+    //   );
+    //   return res.status(201).json({
+    //     success: true,
+    //     data: updatedThought,
+    //   });
+    const deletedReaction = await Reaction.findOneAndDelete({
+      _id: reactionId,
     });
+    console.log(deletedReaction);
   } catch (error) {
     console.log(`[ERROR: Failed to delete reaction | ${error.message}]`);
-
     return res.status(500).json({
       success: false,
       error: "Failed to delete reaction",
