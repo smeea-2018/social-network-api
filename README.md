@@ -54,7 +54,10 @@ The following videos show the web application's appearance and functionality:
 
 <a href = "https://drive.google.com/file/d/1clH9PGtp4bR5-s2oAIxnNApqLfeNtnvo/view">Watch Video </a>
 
-![ecommerce functionality demonstration](""./../socialNetwork_API_Users_Thoughts.gif)
+![Mock-up](./addReactionsandFriends.gif)
+
+<a href= "https://drive.google.com/file/d/1tsLjHgzhr_8JxaTezE9v6aWbwuv6sFnY/view">Watch Video</a>
+![functionality demonstration-add reaction and friend](./socialNetworkApi.gif)
 
 ## Contact Me:
 
