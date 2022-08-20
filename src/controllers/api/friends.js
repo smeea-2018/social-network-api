@@ -7,8 +7,6 @@ const addFriend = async (req, res) => {
 
     console.log(id, userId);
 
-    const user = await User.findById(userId);
-
     if (id) {
       const friend = await User.findByIdAndUpdate(userId, {
         $push: { friends: id },
@@ -35,11 +33,11 @@ const addFriend = async (req, res) => {
 };
 const deleteFriend = async (req, res) => {
   try {
-    const { _id } = req.params;
+    const { id } = req.params;
     const { friendId } = req.body;
-    console.log(_id, friendId);
+    console.log(id, friendId);
 
-    const updatedUser = await User.findByIdAndUpdate(_id, {
+    const updatedUser = await User.findByIdAndUpdate(id, {
       $pull: { friends: friendId },
     });
     console.log(updatedUser);

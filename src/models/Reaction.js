@@ -1,3 +1,4 @@
+const moment = require("moment");
 const mongoose = require("mongoose");
 const Thought = require("./Thought");
 
@@ -18,6 +19,9 @@ const reactionSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+    get: (time) => {
+      return moment(time).format("MMM Do, YYYY [at] hh:mm a");
+    },
   },
 });
 

@@ -30,19 +30,12 @@ const deleteReaction = async (req, res) => {
     const { id } = req.params;
     const { reactionId } = req.body;
     console.log(reactionId);
-    const updatedThought = await Thought.findByIdAndUpdate(
-      id,
-      {
-        $pull: { reactions: { _id: reactionId } },
-      },
-      { returnDocument: "after" }
-    );
+    const updatedThought = await Thought.findByIdAndUpdate(id, {
+      $pull: { reactions: { reactionId: reactionId } },
+    });
     return res.status(201).json({
       success: true,
       data: updatedThought,
-    });
-    const deletedReaction = await Reaction.findOneAndDelete({
-      _id: reactionId,
     });
     console.log(deletedReaction);
   } catch (error) {
