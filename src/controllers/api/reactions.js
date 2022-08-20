@@ -1,13 +1,11 @@
 // import { ObjectId } from "mongoose";
 const { Thought } = require("../../models");
-const { Reaction } = require("../../models/Reaction");
 
 const addReaction = async (req, res) => {
   try {
     const { id } = req.params;
 
     const { reactionBody, userName } = req.body;
-    console.log(id, reactionBody, userName);
 
     const thoughtToUpdate = await Thought.findByIdAndUpdate(id, {
       $push: { reactions: req.body },
@@ -29,7 +27,7 @@ const deleteReaction = async (req, res) => {
   try {
     const { id } = req.params;
     const { reactionId } = req.body;
-    console.log(reactionId);
+
     const updatedThought = await Thought.findByIdAndUpdate(id, {
       $pull: { reactions: { reactionId: reactionId } },
     });
@@ -37,7 +35,6 @@ const deleteReaction = async (req, res) => {
       success: true,
       data: updatedThought,
     });
-    console.log(deletedReaction);
   } catch (error) {
     console.log(`[ERROR: Failed to delete reaction | ${error.message}]`);
     return res.status(500).json({

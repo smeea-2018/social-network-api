@@ -59,6 +59,9 @@ The following videos show the web application's appearance and functionality:
 <a href= "https://drive.google.com/file/d/1tsLjHgzhr_8JxaTezE9v6aWbwuv6sFnY/view">Watch Video</a>
 ![functionality demonstration-add reaction and friend](./socialNetworkApi.gif)
 
+<a href= "https://drive.google.com/file/d/1R6QvZgFFAPDIYMi-hqgeejmgYf2Nsf_B/view">Watch Video</a>
+![functionality demonstration-delete reaction and friend](./deletereactionsandfriends.gif.gif)
+
 ## Contact Me:
 
 <a href = "mailto: smeeaa131@gmail.com"> email </a>

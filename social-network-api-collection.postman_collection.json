@@ -262,6 +262,130 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "addFriend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userId\": \"62fa7c7b5494ffc617805061\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/users/friends/62fa15ccdf112a1ad602b35c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"users",
+						"friends",
+						"62fa15ccdf112a1ad602b35c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addReaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"reactionBody\":\"fab\", \"userName\":\"Jane\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/thoughts/reaction/62fa14de0deb698cb955aacb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"thoughts",
+						"reaction",
+						"62fa14de0deb698cb955aacb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteFriend",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"friendId\": \"62fa15ccdf112a1ad602b35c\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/users/friends/62fa7c7b5494ffc617805061",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"users",
+						"friends",
+						"62fa7c7b5494ffc617805061"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteReaction",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"reactionId\":\"63016f9a9ead9b5946216291\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/thoughts/reaction/62fa14de0deb698cb955aacb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"thoughts",
+						"reaction",
+						"62fa14de0deb698cb955aacb"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
